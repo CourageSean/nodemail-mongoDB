@@ -5,8 +5,10 @@ const { v4: uuidv4 } = require('uuid');
 
 const fs = require("fs")
 const bcrypt = require('bcrypt');
-// const session =require("express-session")
+const session =require("express-session")
 const flash=require('express-flash-messages') 
+const myPlaintextPassword = 's0/\/\P4$$w0rD';
+const someOtherPlaintextPassword = 'not_bacon';
 const mongoose = require("mongoose")
 const User = require("./models/user")
 const PORT = process.env.PORT || 3003
@@ -35,7 +37,7 @@ app.use(express.urlencoded({ extended: false }));
 
 
 app.use(flash());
-    //  app.use(session({ secret:"secret",resave:false,saveUninitialized:true}))
+     app.use(session({ secret:"secret",resave:false,saveUninitialized:true}))
     // resave:false,
     // saveUninitialized:false
     // }));
@@ -216,4 +218,32 @@ User.findByIdAndUpdate(id,{"status":"active"},(err,result) => {
 })
 
 
+
+//     fs.readFile("./data/Users.json","utf-8", (err,data) => {
+
+//         if(err) {throw err
+//         }else{
+//          const infoo =JSON.parse(data)
+//          const pendingUser  = infoo.find((elt) => {
+//           return elt.id === req.params.id                     
+//           })
+//           console.log(pendingUser,"pendingUser")
+//           pendingUser.status = "active"
+//           const pendingOutfiltered = infoo.filter((elt) => {
+//             return elt.id !== req.params.id
+//           })
+//           pendingOutfiltered.push(pendingUser)
+
+//           fs.writeFile("./data/Users.json", JSON.stringify(pendingOutfiltered), err =>{
+//             if(err){ throw err
+//             }else{
+//                 console.log("file written")
+//             }
+//         })
+//         //   console.log(JSON.stringify(pendingOutfiltered))
+//         }
+//     })
+
+// console.log(req.params.id)
+//   res.render("pages/confirmed")
 })
