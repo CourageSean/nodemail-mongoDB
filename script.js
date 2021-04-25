@@ -147,7 +147,7 @@ app.post('/send', async (req, res) => {
     user.save()
     .then((result) => {
       console.log(result.firstname)
-      const confirmCode ="https://still-stream-15448.herokuapp.com/confirm/"+result._id
+      const confirmCode ="https://pacific-ridge-22963.herokuapp.com/confirm/"+result._id
 
           let info = transporter.sendMail({
         from: '"Super Sean 👻" <YourEmail>', // sender address
@@ -180,7 +180,7 @@ app.get("/resend/:email/:id",(req,res) => {
             pass: "supercode"
         }
     });
-    const confirmCode ="https://still-stream-15448.herokuapp.com/confirm/"+req.params.id
+    const confirmCode ="https://pacific-ridge-22963.herokuapp.com/confirm/"+req.params.id
       let info =  transporter.sendMail({
           from: '"Super Sean 👻" <YourEmail>', // sender address
           to: req.params.email, // list of receivers
