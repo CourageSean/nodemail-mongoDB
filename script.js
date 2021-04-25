@@ -2,7 +2,8 @@ const express = require("express")
 const nodemailer = require('nodemailer');
 require("dotenv").config();
 const { v4: uuidv4 } = require('uuid');
-
+const dotenv = require("dotenv")
+dotenv.config()
 const fs = require("fs")
 const bcrypt = require('bcrypt');
 const session =require("express-session")
@@ -13,12 +14,12 @@ const mongoose = require("mongoose")
 const User = require("./models/user")
 const PORT = process.env.PORT || 3003
 const database =`Nodemail`
-const dbURI = `mongodb+srv://sean:badnewzzmp23@nodemailer.glt2i.mongodb.net/${database}?retryWrites=true&w=majority`
+
 
 
 const app = express() 
 
-mongoose.connect(dbURI,{useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify: false })
+mongoose.connect(process.env.CONNECTIONSTRING,{useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify: false })
 .then((result) =>app.listen(PORT,() => {
     console.log("listening port 3003")
   }))
