@@ -20,7 +20,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node script.js"
+    "start": "node script",
+    "dev": "nodemon script"
   },
   "keywords": [],
   "author": "",
